@@ -1,264 +1,182 @@
-/**
-* Template Name: MyResume - v4.7.0
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-(function() {
-  "use strict";
+// selectElement = document.querySelector("#GRADE");
+// var oInputs = new Array();
+// oInputs = document.getElementsByTagName("input");
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
+// var sum = 0;
+// var res = 0;
+// var n = 0;
+// var nOfHours = 0;
+// function GPA() {
+//   for (i = 0; i < oInputs.length; i++) {
+//     if (oInputs[i].type == "number") {
+//       n = oInputs[i].value;
+//     }
+//   }
+//   output = selectElement.options[selectElement.selectedIndex].value;
+//   nOfHours = nOfHours + n;
+//   res = res + n * output;
+// }
+// function ADD() {
+//   var course = document.getElementById("CourseName").value;
+//   var degree = document.getElementById("CourseHour").value;
+//   output = selectElement.options[selectElement.selectedIndex].value;
+//   var table = document.getElementsByTagName("table")[0];
+//   var newRow = table.insertRow(table.rows.length);
+//   var cell0 = newRow.insertCell(0);
+//   var cell2 = newRow.insertCell(1);
+//   var cell3 = newRow.insertCell(2);
+//   cell0.innerHTML = course;
+//   cell2.innerHTML = degree;
+//   cell3.innerHTML = output;
+//   GPA();
+// }
+// function Calc() {
+//   var x = document.getElementById("prosses");
+//   if (x.style.display === "none") {
+//     x.style.display = "block";
+//   } else {
+//     x.style.display = "none";
+//   }
+
+//   while (nOfHours != 0) {
+//     sum = sum + (nOfHours % 10);
+//     nOfHours = parseInt(nOfHours / 10);
+//   }
+//   res = res / sum;
+//   document.querySelector(".output").textContent = res;
+//   reset();
+// }
+// function reset() {
+//   sum = 0;
+//   res = 0;
+//   n = 0;
+//   nOfHours = 0;
+// }
+
+/*******************************************************
+# Navmenu
+**********************************************************/
+const TogleNavbar = document.querySelector(".togglemanu");
+const main_Nav = document.querySelector(".main-nav");
+TogleNavbar.addEventListener("click", (e) => {
+  main_Nav.classList.toggle("active");
+});
+
+/*******************************************************
+# table handelar
+**********************************************************/
+const semester_inputs_container = document.querySelector(
+  ".semester-inputs tbody"
+);
+const addbtn = document.querySelector(".addbtn");
+
+const table_ROW_Maker = () => {
+  const tr = document.createElement("tr");
+  //Course Name
+  const tdCourseName = document.createElement("td");
+  const CourseNameInput = document.createElement("input");
+  CourseNameInput.placeholder = "Course Name";
+  tdCourseName.appendChild(CourseNameInput);
+  // Grade
+  const tdGrade = document.createElement("td");
+  const tdGradeOptions = [
+    "",
+    { text: "A+", value: 4 },
+    { text: "A", value: 4 },
+    { text: "A-", value: 3.7 },
+    { text: "B+", value: 3.3 },
+    { text: "B", value: 3 },
+    { text: "B-", value: 2.7 },
+    { text: "C+", value: 2.3 },
+    { text: "C", value: 2 },
+    { text: "C-", value: 1.7 },
+    { text: "D+", value: 1.3 },
+    { text: "D", value: 1 },
+    { text: "F", value: 0 },
+  ];
+  const OptionSelct = document.createElement("select");
+  tdGradeOptions.map((element) => {
+    const tdGrade = document.createElement("option");
+    if (element === "") {
+      tdGrade.disabled = true;
+      tdGrade.selected = true;
+      tdGrade.innerHTML = "Grade";
+      OptionSelct.appendChild(tdGrade);
+      return;
     }
-  }
+    tdGrade.value = element.value;
+    tdGrade.innerHTML = element.text;
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
-    }
-  }
-
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
-
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
-
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos,
-      behavior: 'smooth'
-    })
-  }
-
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
-
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('body').classList.toggle('mobile-nav-active')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
-
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let body = select('body')
-      if (body.classList.contains('mobile-nav-active')) {
-        body.classList.remove('mobile-nav-active')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
+    OptionSelct.appendChild(tdGrade);
   });
+  OptionSelct.classList.add("GPAGrade");
+  OptionSelct.onchange = updateToal;
+  tdGrade.appendChild(OptionSelct);
+  // Credits
+  const tdCredits = document.createElement("td");
+  const CreditsInput = document.createElement("input");
+  CreditsInput.placeholder = "Credits";
+  CreditsInput.classList.add("CreditsInput");
+  CreditsInput.onchange = updateToal;
+  tdCredits.appendChild(CreditsInput);
+  // Trash
+  const tdTrash = document.createElement("td");
+  const tdTrashDiv = document.createElement("div");
+  tdTrashDiv.onclick = DeleteHandelar;
+  tdTrashDiv.classList.add("DeleteCourse");
+  const tdTrashI = document.createElement("i");
+  tdTrashI.classList.add("fa-solid", "fa-trash");
+  tdTrashDiv.appendChild(tdTrashI);
+  tdTrash.appendChild(tdTrashDiv);
 
-  /**
-   * Preloader
-   */
-  let preloader = select('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove()
+  tr.appendChild(tdCourseName);
+  tr.appendChild(tdGrade);
+  tr.appendChild(tdCredits);
+  tr.appendChild(tdTrash);
+  semester_inputs_container.appendChild(tr);
+};
+
+addbtn.onclick = () => {
+  table_ROW_Maker();
+};
+
+const DeleteHandelar = () => {
+  const DeleteCourse = document.querySelectorAll(".DeleteCourse");
+  DeleteCourse.forEach((ele) => {
+    ele.addEventListener("click", (e) => {
+      ele.parentElement.parentElement.remove();
+      updateToal();
     });
-  }
-
-  /**
-   * Hero type effect
-   */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
-
-  /**
-   * Skills animation
-   */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
-  }
-
-  /**
-   * Porfolio isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
-      });
-
-      let portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
-    }
-
   });
+};
 
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
-
-  /**
-   * Initiate portfolio details lightbox 
-   */
-  const portfolioDetailsLightbox = GLightbox({
-    selector: '.portfolio-details-lightbox',
-    width: '90%',
-    height: '90vh'
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
+const updateToal = () => {
+  const TotalGpa = document.querySelector(".TotalGpa");
+  const CreditsInput = document.querySelectorAll(".CreditsInput");
+  const Grade = document.querySelectorAll(".GPAGrade");
+  let GradeArr = [];
+  let CreditsInputArr = [];
+  let Total_Hours = 0;
+  let GPA = 0;
+  Grade.forEach((grade) => {
+    if (+grade !== "") {
+      GradeArr.push(+grade.value);
     }
   });
-
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
+  CreditsInput.forEach((e) => {
+    if (+e.value !== "") {
+      Total_Hours += +e.value;
+      CreditsInputArr.push(+e.value);
     }
   });
+  for (let i = 0; i < GradeArr.length; i++) {
+    GPA += GradeArr[i] * CreditsInputArr[i];
+  }
+  console.log();
 
-  /**
-   * Animation on scroll
-   */
-  window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    })
-  });
-
-})()
+  if ((GPA / Total_Hours).toFixed(2) === "NaN") {
+    TotalGpa.innerHTML = (0.0).toFixed(2);
+    return;
+  }
+  TotalGpa.innerHTML = (GPA / Total_Hours).toFixed(2);
+};

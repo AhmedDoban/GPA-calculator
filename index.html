@@ -1,215 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>GPA Calculator</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-  <link href="../GPA/assets/img/title.png" rel="icon">
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        
-        <header  class="d-flex flex-column ">
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                <i class="bi bi-calculator"></i>
-                GPA Calculator
-              </a>
-              
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#HOME">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#GPA">GPA</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#Contact">Contact</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </header>
-
-
-
-
-      <!--"""""""""""""""""""""""""""""""""HOme"""""""""""""""""""""""""""""""""""""""""""-->
-        <section id="HOME" class="d-flex flex-column justify-content-center">
-            <div class="container" data-aos="zoom-in" data-aos-delay="100">
-              <div class="right">
-              </div>
-              <div class="left">
-                <div class="content">
-                  <h1>GPA Calculator</h1>
-                  <p>this app is designed for colleges that have a 4 point GPA</p>
-                  <a href="#GPA" class="btn">Calculate <i class="bi bi-arrow-down-short"></i></a>
-                </div>
-              </div>
-            </div>
-        </section>
-
-<main id="main">
-<!--"""""""""""""""""""""""""""""""""GPA"""""""""""""""""""""""""""""""""""""""""""-->
-        <section id="GPA" class="GPA">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>GPA CALCULATOR</h2>
-                    <p>note : you must add all subjects and then click Calculate button</p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                      <table class="table" id="data">
-                        <thead>
-                          <tr>
-                            <th scope="col">Course Name</th>
-                            <th scope="col">Course Hour</th>
-                            <th scope="col">Grade</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="col-lg-8 pt-4 pt-lg-0 content">
-                        <h3>inputs </h3>
-                        <p class="fst-italic">to create the table in the left hand</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                              <input id="CourseName" type="text" class="form-control" placeholder="Course Name" aria-label="Text input with dropdown button">
-                              <input id="CourseHour" type="number" max="5" min="0" class="form-control" placeholder="Course Hour" aria-label="Text input with dropdown button">
-                              <select id="GRADE" class="form-select" aria-label="Default select example">
-                                <option selected value="0" disabled>Grade</option>
-                                <option value="4">A+ == 4</option>
-                                <option value="4">A === 4</option>
-                                <option value="3.7">A- == 3.7 </option>
-                                <option value="3.3">B+ == 3.3 </option>
-                                <option value="3">B === 3</option>
-                                <option value="2.7">B- == 2.7</option>
-                                <option value="2.3">C+ == 2.3</option>
-                                <option value="2">C === 2</option>
-                                <option value="1.7">C- == 1.7 </option>
-                                <option value="1.3">D+ == 1.3 </option>
-                                <option value="1">D === 1</option>
-                                <option value="0">F === 0</option>
-                              </select>
-
-                              <button class="btn btn-primary" type="button" onclick="ADD()" style="margin-top: 20px;">ADD</button>
-                              <button class="btn btn-primary" type="button" onclick="Calc()" style="margin-top: 20px;">Calculate</button>
-                            </div>
-                            <div class="col-lg-6">
-                              
-                              <div class="circle-wrap" id="prosses" style="display: none;">
-                                <div class="circle">
-                                  <div class="mask full">
-                                    <div class="fill"></div>
-                                  </div>
-                                  <div class="mask half">
-                                    <div class="fill"></div>
-                                  </div>
-                                  <div class="inside-circle"> GPA <p class="output"></p> </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-<!--"""""""""""""""""""""""""""""""""contact"""""""""""""""""""""""""""""""""""""""""""-->
-
-<section id="contact" class="contact">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>Contact</h2>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-4" data-aos="fade-right">
-        <div class="address">
-          <a href="https://goo.gl/maps/sroomfEm3k15dAhG7">
-              <i class="bi bi-geo-alt"></i>
-          </a>
-        <h4>Location</h4>
-        <p>El salam first ,Cairo</p>
-      </div>
-      </div>
-      <div class="col-sm-4"data-aos="zoom-in">
-        <div class="email">
-          <a href="mailto:ahmedzoro323@gmail.com">
-              <i class="bi bi-envelope"></i>
-          </a>
-        <h4>Email</h4>
-        <p>ahmedzoro323@gmail.com</p>
-      </div>
-      </div>
-      <div class="col-sm-4"data-aos="fade-left">
-        <div class="phone">
-          <a href="tel:+201555894860">
-              <i class="bi bi-phone"></i>
-          </a>
-          <h4>Call</h4>
-          <p>01555894860</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-----Title------>
+    <title>GPA Calculator</title>
+    <!---Google Fonts--->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap"
+    />
+    <!-----Style------>
+    <link rel="icon" href="assets/img/title.png" />
+    <link rel="icon" href="assets/css/normalize.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!---------------------------------Start Navbar------------------------------------------->
+    <div class="navbar">
+      <div class="container">
+        <div class="icon">
+          <i class="fa-solid fa-calculator"></i>
+          <span>GPA Calculator</span>
+        </div>
+        <ul class="main-nav">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#home">GPA Calculators</a></li>
+          <li><a href="#home">Grade Calculators </a></li>
+          <li><a href="#home">GPA Scale</a></li>
+          <li><a href="#home">Guides</a></li>
+          <li><a href="#home">Blog</a></li>
+          <li><a href="#home">FAQ</a></li>
+          <div class="social">
+            <li>
+              <a href=""> <i class="fa-brands fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+            </li>
+            <li>
+              <a href=""> <i class="fa-brands fa-google-plus-g"></i></a>
+            </li>
+          </div>
+        </ul>
+        <div class="togglemanu">
+          <i class="fa-solid fa-bars"></i>
         </div>
       </div>
     </div>
-
-  </div>
-</section>
-
-    </main>
-      <footer id="footer">
-        <div class="container">
-          <h3>Ahmed Hesham Sad Doban</h3>
-          <p>you can follow me in this sites</p>
-          <div class="social-links">
-            <a href="https://twitter.com/ahmed_doban" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="https://www.facebook.com/ahmed.doban.56" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="https://www.instagram.com/ahmeddoban/" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <a href="https://api.whatsapp.com/send/?phone=201555894860&text&app_absent=0" class="google-plus"><i class="bx bxl-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/in/ahmeddoban" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            <a href="https://github.com/AhmedDoban" class="linkedin"><i class="bx bxl-github"></i></a>
+    <!---------------------------------End Navbar------------------------------------------->
+    <!---------------------------------Start Landing------------------------------------------->
+    <div class="landing">
+      <div class="container">
+        <div class="left">
+          <h1>GPA Calculator</h1>
+          <p>
+            Calculate your high school, college and cumulative GPA, check your
+            grades and understand how the GPA scale works.
+          </p>
+        </div>
+        <div class="right">
+          <img src="./assets/img/landing.svg" alt="landing" />
+        </div>
+      </div>
+    </div>
+    <!---------------------------------End Landing------------------------------------------->
+    <!--------------------------------- Start Gpa ------------------------------------------->
+    <div class="Gpa-calculation">
+      <div class="container">
+        <div class="box">
+          <div class="box-title">
+            <h3>Semester Courses</h3>
+            <button class="addbtn">Add Course</button>
+          </div>
+          <table class="semester-inputs">
+            <tr>
+              <td>
+                <input type="text" placeholder="Course name" />
+              </td>
+              <td>
+                <select
+                  name="GPA"
+                  placeholder="Grade"
+                  class="GPAGrade"
+                  onchange="updateToal()"
+                >
+                  <option value="" disabled selected>Grade</option>
+                  <option value="4">A+</option>
+                  <option value="4">A</option>
+                  <option value="3.7">A-</option>
+                  <option value="3.3">B+</option>
+                  <option value="3">B</option>
+                  <option value="2.7">B-</option>
+                  <option value="2.3">C+</option>
+                  <option value="2">C</option>
+                  <option value="1.7">C-</option>
+                  <option value="1.3">D+</option>
+                  <option value="1">D</option>
+                  <option value="0">F</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="Credits"
+                  onchange="updateToal()"
+                  class="CreditsInput"
+                />
+              </td>
+              <td>
+                <div class="DeleteCourse" onclick="DeleteHandelar()">
+                  <i class="fa-solid fa-trash"></i>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" placeholder="Course name" />
+              </td>
+              <td>
+                <select
+                  name="GPA"
+                  placeholder="Grade"
+                  class="GPAGrade"
+                  onchange="updateToal()"
+                >
+                  <option value="" disabled selected>Grade</option>
+                  <option value="4">A+</option>
+                  <option value="4">A</option>
+                  <option value="3.7">A-</option>
+                  <option value="3.3">B+</option>
+                  <option value="3">B</option>
+                  <option value="2.7">B-</option>
+                  <option value="2.3">C+</option>
+                  <option value="2">C</option>
+                  <option value="1.7">C-</option>
+                  <option value="1.3">D+</option>
+                  <option value="1">D</option>
+                  <option value="0">F</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="Credits"
+                  onchange="updateToal()"
+                  class="CreditsInput"
+                />
+              </td>
+              <td>
+                <div class="DeleteCourse" onclick="DeleteHandelar()">
+                  <i class="fa-solid fa-trash"></i>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <div class="box-footer">
+            <h3>Semester GPA</h3>
+            <span class="TotalGpa">0.00</span>
           </div>
         </div>
-      </footer>
-        
+      </div>
+    </div>
+    <!---------------------------------End Gpa------------------------------------------->
+    <!--------------------------------- Academic  Gpa ------------------------------------------->
+    <div class="Academic">
+      <div class="container">
+        <h3 class="main-title">Academic GPA Calculators</h3>
+        <div class="box_container">
+          <div class="box">
+            <div class="img">
+              <img src="assets/img/Academic/Academic1.svg" alt="Academic1" />
+            </div>
+            <div class="content">
+              <i class="fa-solid fa-arrow-right"></i>
+              <h4>College GPA Calculator</h4>
+              <p>
+                Quickly calculate your college or semester GPA, and learn to do
+                it yourself.
+              </p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img">
+              <img src="assets/img/Academic/Academic2.svg" alt="Academic2" />
+            </div>
+            <div class="content">
+              <i class="fa-solid fa-arrow-right"></i>
+              <h4>High School GPA Calculator</h4>
+              <p>
+                Track and save your high school GPA to keep tabs on your
+                academic progress.
+              </p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img">
+              <img src="assets/img/Academic/Academic3.svg" alt="Academic3" />
+            </div>
+            <div class="content">
+              <i class="fa-solid fa-arrow-right"></i>
 
+              <h4>Cumulative GPA Calculator</h4>
+              <p>
+                Figure out your overall GPA, and how you stack up against the
+                national average.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--------------------------------- Academic  Gpa ------------------------------------------->
+    <!--------------------------------- Scale  Gpa ------------------------------------------->
+    <div class="Scale">
+      <div class="container">
+        <div class="left">
+          <p>convert</p>
+          <h1>The 4.0 GPA Scale</h1>
+          <span>
+            Converting your grades is an important (but tedious) part of the GPA
+            calculation process. To alleviate some of that tedium we've created
+            a separate tool that takes your letter or percentage grade and
+            converts it to a value on the typical 4.0 scale.
+          </span>
+          <button>Check it out <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="right">
+          <p>Common GPA Conversions</p>
+          <ul>
+            <li>4.0 GPA to Letter Grade</li>
+            <li>3.0 GPA to Letter Grade</li>
+            <li>A- Letter Grade to GPA</li>
+            <li>B+ Letter Grade to GPA</li>
+            <li>See all conversion</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--------------------------------- Scale  Gpa ------------------------------------------->
+  </body>
 
-      <div id="preloader"></div>
-      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-
-  
+  <script
+    src="https://kit.fontawesome.com/e39d260dfe.js"
+    crossorigin="anonymous"
+  ></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/script.js"></script>
-    </body>
 </html>
