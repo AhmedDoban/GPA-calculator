@@ -678,3 +678,66 @@ a {
   transform: rotate(-45deg);
   transition: var(--main-transition);
 }
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Learn
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Learn {
+  position: relative;
+  background-color: var(--main-page-color);
+  width: 100%;
+}
+.Learn .container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.Learn .container .left img {
+  position: relative;
+  height: 450px;
+}
+@media (max-width: 992px) {
+  .Learn .container .left {
+    display: none;
+  }
+}
+.Learn .container .right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.Learn .container .right p {
+  position: relative;
+  color: var(--purple-color);
+  font-size: 18px;
+  font-weight: bold;
+}
+.Learn .container .right h1 {
+  color: var(--main-color);
+  font-size: 24px;
+}
+.Learn .container .right span {
+  color: var(--main-p-color);
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+.Learn .container .right button {
+  position: relative;
+  padding: 14px 18px;
+  border: 0;
+  background-color: var(--purple-color);
+  color: #fff;
+  width: fit-content;
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.Learn .container .right button:hover {
+  transform: scale(1.1);
+}
