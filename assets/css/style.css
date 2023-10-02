@@ -18,6 +18,16 @@ General
   --main-box-shadow: 0 0.25em 1em rgba(7, 29, 63, 0.125);
   --purple-color: #30cfb3;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+}
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, #2196f3 0%, #30cfb3 99%);
+  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+}
 html {
   scroll-behavior: smooth;
 }
@@ -31,9 +41,10 @@ h6 {
   color: #121212;
 }
 p {
-  line-height: 1.7;
+  position: relative;
+  line-height: 1.5;
   color: var(--main-p-color);
-  letter-spacing: 1px;
+  letter-spacing: 0.2px;
 }
 body {
   font-family: "Open Sans";
@@ -197,14 +208,12 @@ a {
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .landing {
   position: relative;
-  min-height: 50vh;
-  padding: 20px 0 0 20px;
   width: 100%;
 }
 .landing::before {
   position: absolute;
   content: "";
-  height: 130%;
+  height: 150%;
   width: 100%;
   background-color: var(--main-page-color);
   top: 0;
@@ -265,6 +274,7 @@ a {
   border-radius: 0.5em;
   box-shadow: var(--main-box-shadow);
   max-width: 100%;
+  width: 600px;
 }
 .Gpa-calculation .container .box .box-title {
   position: relative;
@@ -387,7 +397,6 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   gap: 15px;
   margin: 15px 0 0 0;
   padding: 15px 0 0 0;
@@ -396,11 +405,26 @@ a {
 .Gpa-calculation .container .box .box-footer h3 {
   font-size: 14px;
   color: var(--main-color);
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
-.Gpa-calculation .container .box .box-footer span {
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: var(--main-p-color);
+.Gpa-calculation .container .box .box-footer .progress_bar {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #eee;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+.Gpa-calculation .container .box .box-footer .progress_bar .GPAprogress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--main-color);
+  transition: var(--main-transition);
 }
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 # Academic
@@ -832,4 +856,187 @@ a {
 }
 .Calculations .container .box:hover .content i {
   animation: rightAnimaton 0.7s ease-in-out alternate infinite;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# FAQ
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.FAQ {
+  position: relative;
+  width: 100%;
+  padding-bottom: var(--main-padding-bottom);
+  padding-top: var(--main-padding-top);
+  overflow: hidden;
+}
+.FAQ::before {
+  position: absolute;
+  content: "";
+  height: 50%;
+  width: 100%;
+  background-color: var(--main-page-color);
+  bottom: 0;
+  right: 0;
+  transform: skewY(-5deg);
+  transform-origin: bottom right;
+}
+.FAQ .container {
+  position: relative;
+  display: flex;
+  gap: 15px;
+}
+@media (max-width: 992px) {
+  .FAQ .container {
+    flex-direction: column;
+  }
+}
+.FAQ .container .left {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.FAQ .container .left h1 {
+  position: relative;
+  color: var(--main-color);
+}
+.FAQ .container .left span {
+  position: relative;
+  line-height: 1.7;
+  color: var(--main-p-color);
+  letter-spacing: 0.5px;
+  font-size: 16px;
+}
+.FAQ .container .left button {
+  position: relative;
+  padding: 15px 18px;
+  border-radius: 0.5em;
+  border: 0;
+  width: fit-content;
+  background-color: var(--purple-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.FAQ .container .left button:hover {
+  transform: scale(1.1);
+}
+
+.FAQ .container .left p,
+.FAQ .container .right p {
+  position: relative;
+  color: var(--purple-color);
+}
+.FAQ .container .right {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  box-shadow: var(--main-box-shadow);
+  padding: 20px;
+  border-radius: 0.5em;
+}
+.FAQ .container .right ul {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.FAQ .container .right ul li {
+  position: relative;
+  padding: 10px 0;
+  color: var(--main-p-color);
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.FAQ .container .right ul li::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  content: "\f061";
+  font-family: "font awesome 5 free";
+  font-weight: 900;
+  transition: var(--main-transition);
+}
+.FAQ .container .right ul li:hover::before {
+  animation: rightAnimaton 0.7s ease-in-out alternate infinite;
+  color: var(--main-color);
+}
+.FAQ .container .right ul li:hover {
+  color: var(--main-color-hover);
+}
+.FAQ .container .right ul li:not(:last-child) {
+  border-bottom: 1px solid var(--main-background-color);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Footer
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Footer {
+  position: relative;
+  width: 100%;
+  background-color: var(--main-page-color);
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+}
+.Footer .container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 15px;
+}
+.Footer .container .box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.Footer .container .box h4 {
+  color: var(--main-color);
+  font-weight: bold;
+}
+.Footer .container .box ul {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Footer .container .box ul li {
+  position: relative;
+  color: var(--main-p-color);
+  transition: var(--main-transition);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+.Footer .container .box ul li:hover {
+  color: var(--main-color);
+}
+.Footer .container .social {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+.Footer .container .social a {
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
+  box-shadow: var(--main-box-shadow);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--main-transition);
+  color: var(--main-color);
+}
+.Footer .container .social a:hover {
+  background-color: var(--main-color);
+  color: #fff;
 }

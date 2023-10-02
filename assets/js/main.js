@@ -154,6 +154,7 @@ const updateToal = () => {
   const TotalGpa = document.querySelector(".TotalGpa");
   const CreditsInput = document.querySelectorAll(".CreditsInput");
   const Grade = document.querySelectorAll(".GPAGrade");
+  const GPAprogress = document.querySelector(".GPAprogress");
   let GradeArr = [];
   let CreditsInputArr = [];
   let Total_Hours = 0;
@@ -179,4 +180,5 @@ const updateToal = () => {
     return;
   }
   TotalGpa.innerHTML = (GPA / Total_Hours).toFixed(2);
+  GPAprogress.style.cssText = `width:${(GPA / Total_Hours / 4) * 100}%`;
 };
