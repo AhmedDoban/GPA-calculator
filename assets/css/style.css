@@ -18,6 +18,9 @@ General
   --main-box-shadow: 0 0.25em 1em rgba(7, 29, 63, 0.125);
   --purple-color: #30cfb3;
 }
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# scrollbar
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -55,6 +58,9 @@ ul {
 a {
   text-decoration: none;
 }
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cntainer
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .container {
   padding-left: 15px;
   padding-right: 15px;
@@ -79,6 +85,9 @@ a {
     width: 1170px;
   }
 }
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# main-title
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .main-title {
   position: relative;
   color: var(--main-color);
@@ -107,6 +116,76 @@ a {
   background-color: var(--main-color);
   border-radius: 15px;
 }
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# back_to_top
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.back_to_top {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background-color: var(--main-color);
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  z-index: -999;
+  opacity: 0;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.back_to_top.active {
+  opacity: 1;
+  z-index: 999;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# preloader
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  z-index: 9999999;
+}
+.preloader.active {
+  display: none;
+}
+.preloader .container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+.preloader .container p {
+  font-size: 28px;
+  font-weight: bold;
+}
+.preloader .container .dots {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+.preloader .container .dots span {
+  width: 20px;
+  height: 20px;
+  background-image: linear-gradient(180deg, #2196f3 0%, #30cfb3 99%);
+  border-radius: 50%;
+  animation: fade 0.5s ease-in-out alternate-reverse infinite;
+}
+@keyframes fade {
+  to {
+    opacity: 0.5;
+  }
+}
+
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 # Navbar
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
