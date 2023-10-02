@@ -16,6 +16,7 @@ General
   --main-background-color: #ececec;
   --main-p-color: #777;
   --main-box-shadow: 0 0.25em 1em rgba(7, 29, 63, 0.125);
+  --purple-color: #30cfb3;
 }
 html {
   scroll-behavior: smooth;
@@ -489,3 +490,97 @@ a {
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 # Scale
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Scale {
+  position: relative;
+  width: 100%;
+}
+.Scale .container {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  padding-bottom: var(--main-padding-bottom);
+  border-bottom: 1px solid var(--main-background-color);
+}
+.Scale .container .left {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.Scale .container .left h1 {
+  position: relative;
+  color: var(--main-color);
+}
+.Scale .container .left span {
+  position: relative;
+  line-height: 1.7;
+  color: var(--main-p-color);
+  letter-spacing: 0.5px;
+  font-size: 16px;
+}
+.Scale .container .left button {
+  position: relative;
+  padding: 15px 18px;
+  border-radius: 0.5em;
+  border: 0;
+  width: fit-content;
+  background-color: var(--purple-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.Scale .container .left button:hover {
+  transform: scale(1.1);
+}
+
+.Scale .container .left p,
+.Scale .container .right p {
+  position: relative;
+  color: var(--purple-color);
+}
+.Scale .container .right {
+  position: relative;
+  min-width: 250px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.Scale .container .right ul {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.Scale .container .right ul li {
+  position: relative;
+  padding: 10px 0;
+  color: var(--main-p-color);
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.Scale .container .right ul li::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  content: "\f061";
+  font-family: "font awesome 5 free";
+  font-weight: 900;
+  transition: var(--main-transition);
+}
+.Scale .container .right ul li:hover::before {
+  animation: rightAnimaton 0.7s ease-in-out alternate infinite;
+  color: var(--main-color);
+}
+.Scale .container .right ul li:hover {
+  color: var(--main-color-hover);
+}
+.Scale .container .right ul li:not(:last-child) {
+  border-bottom: 1px solid var(--main-background-color);
+}
